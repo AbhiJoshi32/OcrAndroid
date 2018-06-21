@@ -1,0 +1,9 @@
+<resources >
+    <string name="app_name">OcrAndroid</string>
+    <string name="main_frag_title">Recent</string>
+    <string name="ocr_frag_title">OCR</string>
+    <string name="pick_image_text">Pick Image</string>
+    <string name="gallery_btn_text">Gallery</string>
+    <string name="camera_btn_text">Camera</string>
+    <string name="result_heading">Result</string>
+</resources>
