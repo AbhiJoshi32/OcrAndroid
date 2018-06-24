@@ -11,6 +11,7 @@ import com.binktec.ocrandroid.api.ApiErrorResponse
 import com.binktec.ocrandroid.api.ApiResponse
 import com.binktec.ocrandroid.api.ApiSuccessResponse
 import com.binktec.ocrandroid.data.model.Resource
+import timber.log.Timber
 
 /**
  * A generic class that can provide a resource backed by both the sqlite database and the network.
@@ -61,6 +62,7 @@ abstract class NetworkBoundResource<ResultType, RequestType>
             when (response) {
                 is ApiSuccessResponse -> {
                     appExecutors.diskIO().execute {
+                        Timber.d(response.toString())
                         saveCallResult(processResponse(response))
                         appExecutors.mainThread().execute {
                             // we specially request a new live data,
@@ -90,7 +92,9 @@ abstract class NetworkBoundResource<ResultType, RequestType>
         }
     }
 
-    protected open fun onFetchFailed() {}
+    protected open fun onFetchFailed() {
+
+    }
 
     fun asLiveData() = result as LiveData<Resource<ResultType>>
 

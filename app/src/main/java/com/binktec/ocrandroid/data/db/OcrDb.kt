@@ -19,9 +19,8 @@ package com.binktec.ocrandroid.data.db
 
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.RoomDatabase
-import android.arch.persistence.room.TypeConverters
 import com.binktec.ocrandroid.data.model.OcrRequest
-import com.binktec.ocrandroid.data.model.response.OcrResponse
+import com.binktec.ocrandroid.data.model.OcrResponse
 
 /**
  * Main database description.
@@ -33,7 +32,6 @@ import com.binktec.ocrandroid.data.model.response.OcrResponse
         version = 1,
         exportSchema = false
 )
-@TypeConverters(PostmanTypeConverters::class)
 abstract class OcrDb : RoomDatabase() {
     abstract fun requestDao(): OcrRequestDao
     abstract fun responseDao(): OcrResponseDao

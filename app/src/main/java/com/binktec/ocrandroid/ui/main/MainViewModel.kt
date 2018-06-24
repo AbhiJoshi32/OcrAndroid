@@ -9,5 +9,5 @@ import com.binktec.ocrandroid.repository.OcrRepo
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(val ocrRepo: OcrRepo): ViewModel() {
-    val mutableReqList = ocrRepo.getAllOcrReq()
+    val title = MutableLiveData<String>()
 }

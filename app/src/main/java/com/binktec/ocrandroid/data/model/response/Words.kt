@@ -4,9 +4,9 @@ package com.binktec.ocrandroid.data.model.response
 import com.google.gson.annotations.SerializedName
 
 data class Words (
-		@SerializedName("wordText") val wordText : String,
-		@SerializedName("left") val left : Int,
-		@SerializedName("top") val top : Int,
-		@SerializedName("height") val height : Int,
-		@SerializedName("width") val width : Int
+		@SerializedName("WordText") val wordText : String?,
+		@SerializedName("Left") val left : Int?,
+		@SerializedName("Top") val top : Int?,
+		@SerializedName("Height") val height : Int?,
+		@SerializedName("Width") val width : Int?
 )

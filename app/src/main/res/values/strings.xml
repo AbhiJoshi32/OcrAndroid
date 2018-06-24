@@ -6,4 +6,5 @@
     <string name="gallery_btn_text">Gallery</string>
     <string name="camera_btn_text">Camera</string>
     <string name="result_heading">Result</string>
+    <string name="empty_ocr_list">No OCR Request. Press \'+\' to request OCR</string>
 </resources>

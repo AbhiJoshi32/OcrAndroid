@@ -10,12 +10,10 @@ import javax.inject.Inject
 
 class OcrNavigationController @Inject constructor(mainActivity: MainActivity) {
     private val containerId = R.id.container
-    private val toolbar = mainActivity.supportActionBar
     private val context = mainActivity
 
     fun navigateToMain() {
         val mainFragment = MainFragment.newInstance()
-        toolbar?.title = context.getString(R.string.main_frag_title)
         context.supportFragmentManager
                 .beginTransaction()
                 .replace(containerId,mainFragment)
@@ -23,9 +21,18 @@ class OcrNavigationController @Inject constructor(mainActivity: MainActivity) {
     }
     fun navigateToOcr(ocrRequest: OcrRequest)  {
         val ocrFragment = OcrFragment.newInstance(ocrRequest.name,ocrRequest.imagePath)
-        toolbar?.title = context.getString(R.string.ocr_frag_title)
         context.supportFragmentManager
                 .beginTransaction()
+                .addToBackStack(null)
+                .replace(containerId,ocrFragment)
+                .commitAllowingStateLoss()
+    }
+
+    fun navigateToOcr()  {
+        val ocrFragment = OcrFragment.newInstance(null,null)
+        context.supportFragmentManager
+                .beginTransaction()
+                .addToBackStack(null)
                 .replace(containerId,ocrFragment)
                 .commitAllowingStateLoss()
     }
