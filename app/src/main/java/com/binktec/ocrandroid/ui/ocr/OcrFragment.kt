@@ -141,7 +141,7 @@ class OcrFragment : Fragment(), Injectable {
                 perms[Manifest.permission.WRITE_EXTERNAL_STORAGE] = PackageManager.PERMISSION_GRANTED
                 if (grantResults.isNotEmpty()) {
                     for (i in permissions.indices)
-                        perms[permissions[i]] = grantResults[1]
+                        perms[permissions[i]] = grantResults[i]
                     if (perms[Manifest.permission.CAMERA] == PackageManager.PERMISSION_GRANTED
                         && perms[Manifest.permission.WRITE_EXTERNAL_STORAGE] == PackageManager.PERMISSION_GRANTED
                         && perms[Manifest.permission.READ_EXTERNAL_STORAGE] == PackageManager.PERMISSION_GRANTED) {
