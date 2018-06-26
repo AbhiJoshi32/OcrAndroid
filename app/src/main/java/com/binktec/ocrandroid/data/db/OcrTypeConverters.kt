@@ -11,34 +11,18 @@ object OcrTypeConverters {
     private val gson = Gson()
     @TypeConverter
     @JvmStatic
-    fun stringToSomeObjectList(data: String?): List<ParsedResults> {
+    fun stringToMap(data: String?): Map<String,String> {
         if (data == "null") {
-            return Collections.emptyList()
+            return Collections.emptyMap()
         }
 
-        val listType = object : TypeToken<List<ParsedResults>>() {}.type
-        return gson.fromJson(data, listType)
+        val mapType = object : TypeToken<Map<String,String>>() {}.type
+        return gson.fromJson(data, mapType)
     }
 
     @TypeConverter
     @JvmStatic
-    fun someObjectListToString(someObjects: List<ParsedResults>): String {
-        return gson.toJson(someObjects)
-    }
-
-    @TypeConverter
-    @JvmStatic
-    fun stringToStringList(data: String?): List<String> {
-        if (data == "null") {
-            return Collections.emptyList()
-        }
-        val listType = object : TypeToken<List<String>>() {}.type
-        return gson.fromJson(data, listType)
-    }
-
-    @TypeConverter
-    @JvmStatic
-    fun stringListtoString(someObjects: List<String>): String {
+    fun mapToString(someObjects: Map<String,String>): String {
         return gson.toJson(someObjects)
     }
 }

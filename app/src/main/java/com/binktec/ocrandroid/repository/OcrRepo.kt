@@ -17,6 +17,9 @@ import java.io.File
 import javax.inject.Inject
 import okhttp3.RequestBody
 import okhttp3.MultipartBody
+import javax.inject.Singleton
+
+@Singleton
 class OcrRepo
 @Inject
 constructor(private val ocrRequestDao: OcrRequestDao,

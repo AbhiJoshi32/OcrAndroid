@@ -7,4 +7,14 @@
     <string name="camera_btn_text">Camera</string>
     <string name="result_heading">Result</string>
     <string name="empty_ocr_list">No OCR Request. Press \'+\' to request OCR</string>
+    <string name="ocr_process_text">OCR in process</string>
+    <string name="proces_contact_text">finding contact details</string>
+    <string name="cant_process_ocr">Couldnt find characters</string>
+    <string name="contact_info_title">Contact Info</string>
+    <string name="name_hint">Name</string>
+    <string name="number_hint">Number</string>
+    <string name="email_hint">Email</string>
+    <string name="place_hint">Place</string>
+    <string name="create_contact_btn">Create Contact</string>
+    <string name="company_hint">Company</string>
 </resources>

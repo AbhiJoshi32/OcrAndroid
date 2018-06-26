@@ -4,6 +4,7 @@
     package="com.binktec.ocrandroid">
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
     <uses-permission android:name="android.permission.CAMERA" android:required="true" />
     <uses-permission android:name="android.permission.INTERNET" android:required="true" />
 

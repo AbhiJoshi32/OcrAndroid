@@ -1,18 +1,18 @@
 package com.binktec.ocrandroid.ui.ocr
 
 import android.arch.lifecycle.*
-import com.binktec.ocrandroid.data.model.OcrRequest
-import com.binktec.ocrandroid.data.model.OcrResponse
-import com.binktec.ocrandroid.data.model.Resource
+import com.binktec.ocrandroid.data.model.*
 import com.binktec.ocrandroid.repository.OcrRepo
+import com.binktec.ocrandroid.repository.TextExtractorRepo
 import com.binktec.ocrandroid.utils.AbsentLiveData
 import java.io.File
 import javax.inject.Inject
 
-class OcrViewModel @Inject constructor(val ocrRepo: OcrRepo): ViewModel() {
-    var reqParam = MutableLiveData<ReqParams>()
-    var file = MutableLiveData<File>()
-    var ocrRequest: LiveData<OcrRequest> = Transformations.switchMap(reqParam) {
+class OcrViewModel @Inject constructor(private val ocrRepo: OcrRepo, private val textExtractorRepo: TextExtractorRepo): ViewModel() {
+    val reqParam = MutableLiveData<ReqParams>()
+    val file = MutableLiveData<File>()
+
+    val ocrRequest: LiveData<OcrRequest> = Transformations.switchMap(reqParam) {
         it.ifExists { name, path ->
             ocrRepo.getRequest(name,path)
         }
@@ -23,6 +23,16 @@ class OcrViewModel @Inject constructor(val ocrRepo: OcrRepo): ViewModel() {
             ocrRepo.getResponse(name = name, path = path)
         }
     }
+
+
+    val textToExtract = MutableLiveData<String>()
+
+    val entities:LiveData<Resource<TextEntities>> = Transformations.switchMap(textToExtract) {
+        if (!it.isNullOrEmpty()) {
+            textExtractorRepo.getTextExtracted(reqParam.value!!.name!!, reqParam.value!!.path!!,it)
+        } else AbsentLiveData.create()
+    }
+
 
     fun setReqParam(name: String?, path: String?) {
         val update = ReqParams(name, path)

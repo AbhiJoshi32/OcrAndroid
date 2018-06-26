@@ -19,8 +19,10 @@ package com.binktec.ocrandroid.data.db
 
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.RoomDatabase
+import android.arch.persistence.room.TypeConverters
 import com.binktec.ocrandroid.data.model.OcrRequest
 import com.binktec.ocrandroid.data.model.OcrResponse
+import com.binktec.ocrandroid.data.model.TextEntities
 
 /**
  * Main database description.
@@ -28,11 +30,14 @@ import com.binktec.ocrandroid.data.model.OcrResponse
 @Database(
     entities = [
         OcrRequest::class,
-        OcrResponse::class],
+        OcrResponse::class,
+        TextEntities::class],
         version = 1,
         exportSchema = false
 )
+@TypeConverters(OcrTypeConverters::class)
 abstract class OcrDb : RoomDatabase() {
     abstract fun requestDao(): OcrRequestDao
     abstract fun responseDao(): OcrResponseDao
+    abstract fun textExtractorDao(): TextExtractorDao
 }
