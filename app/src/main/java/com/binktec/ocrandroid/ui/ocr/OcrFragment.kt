@@ -216,8 +216,9 @@ class OcrFragment : Fragment(), Injectable {
             }
             else -> {
                 Toast.makeText(context,"Cant find any contact info",Toast.LENGTH_LONG).show()
-                contactCard.visibility = View.VISIBLE
+                contactCard.visibility = View.GONE
                 res_progress.visibility = View.GONE
+                processText.visibility = View.INVISIBLE
             }
         }
     }
